@@ -1,0 +1,16 @@
+{
+  "name": "csv-doctor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-first CSV inspection and reversible cleaning, with a shared browser and CLI engine.",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "source": "python3 scripts/package-source.py",
+    "start": "python3 -m http.server 8080 --bind 127.0.0.1 --directory dist",
+    "demo:cli": "node scripts/cli.mjs dist/sample.csv --out /tmp/csv-doctor-clean.csv --report /tmp/csv-doctor-report.json"
+  },
+  "license": "MIT"
+}

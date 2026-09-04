@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d3639">
+  <meta name="description" content="CSV dosyanı tarayıcıda incele. Boş, yinelenen ve tutarsız değerleri bul; değişiklikleri karşılaştır ve temizlenmiş CSV dosyasını indir.">
+  <title>CSV Doctor — Verini incele, kontrollü temizle</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="CSV Doctor ana sayfa"><span class="brand-mark" aria-hidden="true">+</span> CSV Doctor</a>
+    <span class="privacy">Dosyan bu tarayıcıda kalır</span>
+    <a class="source-link" href="/download/csv-doctor-source.zip" download>Kaynak kodu <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <div class="page-heading"><div><p class="eyebrow">VERİ KALİTESİ ATÖLYESİ</p><h1>Dağınık CSV, net bir tablo.</h1><p>Önce sorunları gör. Sonra neyin değişeceğine karar ver.</p></div><span class="version">CSV Doctor / 01</span></div>
+    <div class="workspace">
+      <aside class="sidebar" aria-label="Dosya ve temizleme seçenekleri">
+        <section class="panel input-panel">
+          <h2><span class="step">01</span> Dosyanı seç</h2>
+          <div class="drop-zone" id="drop-zone">
+            <span class="file-icon" aria-hidden="true">CSV</span>
+            <label class="upload-label" for="file-input">CSV dosyası seç</label>
+            <input id="file-input" type="file" accept=".csv,.tsv,text/csv,text/tab-separated-values">
+            <p>veya buraya sürükle</p>
+            <small>UTF-8 · en fazla 2 MiB<br>20.000 kayıt · 100 sütun · 200.000 hücre</small>
+          </div>
+          <div class="sample-actions"><button type="button" id="sample-button" class="text-button">Örnek veriyi aç</button><a href="/sample.csv" download="csv-doctor-ornek.csv">Örneği indir</a></div>
+          <label class="field-label" for="delimiter">Dosyadaki ayırıcı</label>
+          <select id="delimiter"><option value="auto">Otomatik algıla</option value=",">Virgül ( , )</option><option value=";">Noktalı virgül ( ; )</option><option value="tab">Sekme (Tab)</option></select>
+        </section>
+        <section class="panel rules-panel">
+          <h2><span class="step">02</span> Temizleme planı</h2>
+          <label class="rule"><input id="trim" type="checkbox" checked><span><strong>Kenar boşluklarını temizle</strong><small>Hücre ve başlıkların başı ile sonu.</small></span></label>
+          <label class="rule"><input id="remove-blank" type="checkbox" checked><span><strong>Tamamen boş kayıtları kaldır</strong><small>Kısmen eksik kayıtlar korunur.</small></span></label>
+          <label class="rule"><input id="deduplicate" type="checkbox" checked><span><strong>Yinelenen kayıtları kaldır</strong><small>Tüm alanları aynı olan ilk kayıt kalır.</small></span></label>
+          <p class="rule-note">Seçenekleri değiştirdiğinde önizleme yenilenir. Orijinal dosyan değişmez.</p>
+        </section>
+        <div class="aside-note"><strong>Kararı sana bırakır.</strong><p>Eksik alanları doldurmaz. Tarih, sayı ve ürün kodlarını dönüştürmez.</p></div>
+      </aside>
+      <div class="main-column">
+        <p id="status" class="status" role="status" aria-live="polite">Örnek dosya hazırlanıyor…</p>
+        <div id="error" class="error-panel" role="alert" hidden></div>
+        <div id="results" hidden>
+          <section class="result-overview" aria-labelledby="result-title">
+            <div class="result-heading"><div><p class="eyebrow" id="file-kind">ÖRNEK DOSYA</p><h2 id="result-title">örnek.csv</h2><p id="file-meta"></p></div><span class="file-badge">.csv</span></div>
+            <div class="metrics">
+              <div><span>Orijinal kayıt</span><strong id="before-count">—</strong></div>
+              <div><span>Önizlemede kalan</span><strong id="after-count">—</strong></div>
+              <div><span>Kaldırılacak kayıt</span><strong id="removed-count">—</strong></div>
+              <div class="metric-warning"><span>Kalan eksik hücre</span><strong id="missing-count">—</strong></div>
+            </div>
+          </section>
+          <section class="panel findings-panel" aria-labelledby="findings-title">
+            <div class="section-title"><h2 id="findings-title"><span class="step">03</span> İnceleme özeti</h2><span class="muted">Seçili plana göre</span></div>
+            <div id="findings" class="findings"></div>
+          </section>
+          <section class="panel preview-panel" aria-labelledby="preview-title">
+            <div class="section-title preview-title"><h2 id="preview-title">Veri önizlemesi</h2><div class="view-switch" role="group" aria-label="Önizleme görünümü"><button type="button" id="view-original" aria-pressed="false">Orijinal</button><button type="button" id="view-cleaned" aria-pressed="true">Temizlenmiş</button></div></div>
+            <p class="table-description" id="preview-note"></p>
+            <div class="table-scroll" tabindex="0" role="region" aria-label="CSV veri tablosu"><table id="data-table"></table></div>
+            <div class="table-footer"><span id="preview-range"></span><span><i class="legend-swatch" aria-hidden="true"></i> Eksik veya inceleme gerektiren hücre</span></div>
+          </section>
+          <details class="panel column-panel"><summary>Sütun profili <span id="column-summary"></span></summary><p class="profile-note">Türler yalnızca ipucudur. Çoğunluğu sayı veya ISO tarih olan sütunlardaki farklı değerler işaretlenir.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Sütun profili tablosu"><table id="profile-table"></table></div></details>
+          <section class="export-panel" aria-labelledby="export-title">
+            <div><h2 id="export-title"><span class="step">04</span> Sonucu al</h2><p id="export-note"></p><p class="export-safety" id="export-safety"></p></div>
+            <div class="export-actions"><button type="button" id="download-csv" class="primary-button" disabled>Temizlenmiş CSV’yi indir <span aria-hidden="true">↓</span></button><button type="button" id="download-report" class="secondary-button" disabled>İnceleme raporu (.json)</button></div>
+          </section>
+        </div>
+        <noscript><div class="error-panel">CSV Doctor için JavaScript açık olmalı. Kaynak kodunu indirerek komut satırı sürümünü de kullanabilirsin.</div></noscript>
+      </div>
+    </div>
+    <footer><span>Büşra Buse Uçar · CSV Doctor</span><span>Hücreler yüklenmez veya kaydedilmez. Sekmeyi kapattığında çalışma silinir.</span></footer>
+  </main>
+</body>
+</html>

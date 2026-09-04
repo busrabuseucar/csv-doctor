@@ -1,0 +1,15 @@
+urun_kodu,urun,adet,kategori,tarih
+001, Mekanik klavye ,12,Elektronik,2026-09-01
+002,USB-C kablo,25,Aksesuar,2026-09-01
+003,Monitör,8,Elektronik,2026-09-02
+004,Defter,,Kırtasiye,2026-09-02
+005,Masa lambası,6,Ev,2026-09-03
+002,USB-C kablo,25,Aksesuar,2026-09-01
+006,Kalem,otuz,Kırtasiye,2026-09-03
+007,"Mouse, kablosuz",15,Elektronik,2026-09-03
+,,,,
+008, Laptop standı ,9,,2026-09-04
+009,Çanta,4,Aksesuar,2026-09-04
+010,Termos,11,Ev,2026-02-30
+003,Monitör,8,Elektronik,2026-09-02
+011,Kulaklık,7,Elektronik,2026-09-04
