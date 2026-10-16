@@ -1,6 +1,6 @@
 # CSV Doctor — uygulayarak öğren
 
-Amaç yalnızca bir demo yayımlamak değil; her kuralın neden var olduğunu açıklayabilmek. Bu proje yapay zekâ desteğiyle hazırlandı. CV ve mülakatta kendi yaptığın değişiklikleri, incelediğin kodu ve doğruladığın davranışları anlat.
+Amaç yalnızca bir demo yayımlamak değil; her kuralın neden var olduğunu açıklayabilmek. CV ve mülakatta kendi yaptığın değişiklikleri, incelediğin kodu ve doğruladığın davranışları anlat.
 
 ## 1. Önce örnek veriyi incele
 
