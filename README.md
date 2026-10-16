@@ -106,7 +106,7 @@ The `dist/` directory contains authored static source; it is tracked in Git and 
 
 ## Scope and attribution
 
-Personal portfolio and learning project for **Büşra Buse Uçar**, developed with AI assistance. No AI model is called at runtime. Describe your own implementation, review and testing contributions accurately. This is an MVP for bounded files, not a replacement for spreadsheet software or a production ETL platform.
+Personal portfolio and learning project for **Büşra Buse Uçar**. No AI model is called at runtime. This is an MVP for bounded files, not a replacement for spreadsheet software or a production ETL platform.
 
 Not included: XLSX, non-UTF-8 decoding, arbitrary encodings, automatic data repair, schema editing, persistent storage, accounts, shared workspaces, or large-file streaming.
 
