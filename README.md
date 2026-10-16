@@ -98,8 +98,6 @@ dist/styles.css     Responsive interface
 dist/sample.csv     Fictional demonstration data
 scripts/cli.mjs     Shared-engine CLI
 tests/              Node built-in tests
-docs/LEARNING.md    Guided exercises and interview questions
-docs/CV.md          Truthful CV wording
 ```
 
 The `dist/` directory contains authored static source; it is tracked in Git and does not require compilation. `npm run source` produces a downloadable ZIP under `dist/download/`. This generated ZIP is ignored by Git and excludes Site identity. The portable hosting manifest in the ZIP can be used for a new static deployment.
