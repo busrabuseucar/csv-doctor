@@ -1,5 +1,11 @@
 # CSV Doctor
 
+## Canlı demonun kapsamı
+
+[Demoyu aç](https://csv-doctor-buse.sleek-brush-8818.chatgpt.site)
+
+CSV inceleme, temizleme önizlemesi ve dışa aktarma tarayıcıda gerçekten çalışır. Başlangıç dosyası örnektir; kendi dosyanı seçebilirsin. Dosyalar sunucuya yüklenmez; eksik değerler otomatik doldurulmaz.
+
 [![CSV Doctor checks](https://github.com/busrabuseucar/csv-doctor/actions/workflows/ci.yml/badge.svg)](https://github.com/busrabuseucar/csv-doctor/actions/workflows/ci.yml)
 
 A local-first CSV inspection and cleaning tool. Open a file, compare the original and cleaned records, and download a CSV plus a JSON audit report. The browser and Node.js CLI share the same JavaScript engine.
