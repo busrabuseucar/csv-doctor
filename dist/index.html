@@ -6,15 +6,15 @@
   <meta name="theme-color" content="#0d3639">
   <meta name="description" content="CSV dosyanı tarayıcıda incele. Boş, yinelenen ve tutarsız değerleri bul; değişiklikleri karşılaştır ve temizlenmiş CSV dosyasını indir.">
   <title>CSV Doctor — Verini incele, kontrollü temizle</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css">
-  <script type="module" src="/app.js"></script>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/" aria-label="CSV Doctor ana sayfa"><span class="brand-mark" aria-hidden="true">+</span> CSV Doctor</a>
+    <a class="brand" href="./" aria-label="CSV Doctor ana sayfa"><span class="brand-mark" aria-hidden="true">+</span> CSV Doctor</a>
     <span class="privacy">Dosyan bu tarayıcıda kalır</span>
-    <a class="source-link" href="/download/csv-doctor-source.zip" download>Kaynak kodu <span aria-hidden="true">↗</span></a>
+    <a class="source-link" href="./download/csv-doctor-source.zip" download>Kaynak kodu <span aria-hidden="true">↗</span></a>
   </header>
   <main>
     <div class="page-heading"><div><p class="eyebrow">VERİ KALİTESİ ATÖLYESİ</p><h1>Dağınık CSV, net bir tablo.</h1><p>Önce sorunları gör. Sonra neyin değişeceğine karar ver.</p></div><span class="version">CSV Doctor / 01</span></div>
@@ -29,7 +29,7 @@
             <p>veya buraya sürükle</p>
             <small>UTF-8 · en fazla 2 MiB<br>20.000 kayıt · 100 sütun · 200.000 hücre</small>
           </div>
-          <div class="sample-actions"><button type="button" id="sample-button" class="text-button">Örnek veriyi aç</button><a href="/sample.csv" download="csv-doctor-ornek.csv">Örneği indir</a></div>
+          <div class="sample-actions"><button type="button" id="sample-button" class="text-button">Örnek veriyi aç</button><a href="./sample.csv" download="csv-doctor-ornek.csv">Örneği indir</a></div>
           <label class="field-label" for="delimiter">Dosyadaki ayırıcı</label>
           <select id="delimiter"><option value="auto">Otomatik algıla</option value=",">Virgül ( , )</option><option value=";">Noktalı virgül ( ; )</option><option value="tab">Sekme (Tab)</option></select>
         </section>

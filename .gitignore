@@ -3,3 +3,8 @@ node_modules/
 __pycache__/
 .DS_Store
 *.log
+
+.env*
+.streamlit/secrets.toml
+playwright-report/
+test-results/

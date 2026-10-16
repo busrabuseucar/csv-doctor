@@ -64,7 +64,7 @@ async function loadSample() {
   source = ''; result = null; $('results').hidden = true; $('error').hidden = true;
   setBusy(true, 'Örnek dosya hazırlanıyor…');
   try {
-    const response = await fetch('/sample.csv');
+    const response = await fetch('./sample.csv');
     if (!response.ok) throw new Error('sample');
     const text = await response.text();
     if (readId !== job) return;

@@ -19,7 +19,7 @@ A local-first CSV inspection and cleaning tool. Open a file, compare the origina
 
 ## Run locally
 
-Requirements: **Node.js 24+**, **Python 3.10+**, and a modern browser with module Web Worker support. There are no third-party runtime or development dependencies and no API keys. No install step is needed.
+Requirements: **Node.js 24+**, **Python 3.10+**, and a modern browser with module Web Worker support. There are no third-party runtime dependencies or API keys. Running the app needs no npm install; optional browser tests use Playwright.
 
 ```bash
 git clone https://github.com/busrabuseucar/csv-doctor.git
@@ -81,11 +81,15 @@ Record numbers count the header as record 1. A quoted newline stays inside one l
 npm test
 npm run source
 npm run check
+npm run test:source
+npm ci
+npx playwright install chromium
+npm run test:browser
 ```
 
-**28 automated tests** cover parsing, structural errors, cleanup ordering, data preservation, delimiter/export round trips, type hints, evidence references, formula-prefix protection, resource limits, real CLI execution, UTF-8 rejection and overwrite prevention.
+**28 engine and CLI tests** cover parsing, structural errors, cleanup ordering, data preservation, delimiter/export round trips, type hints, evidence references, formula-prefix protection, resource limits, real CLI execution, UTF-8 rejection and overwrite prevention.
 
-The check command validates JavaScript syntax, the static hosting entrypoint and local HTML asset references. The GitHub Actions workflow runs the same checks after push. A configured workflow is not a claim that a remote run has already passed. No browser-based visual or end-to-end test was performed for the initial release.
+The check command validates JavaScript syntax, the static hosting entrypoint and local HTML asset references. The GitHub Actions workflow runs the same checks after push. A configured workflow is not a claim that a remote run has already passed. Six Chromium checks run the real module Worker in desktop and mobile layouts, including hosting under a subdirectory, reversible cleaning, CSV/JSON downloads, HTML escaping, formula protection, invalid-input recovery and header-only exports. One Python archive test verifies that local private files and symlinks are excluded.
 
 ## Layout
 
@@ -100,7 +104,7 @@ scripts/cli.mjs     Shared-engine CLI
 tests/              Node built-in tests
 ```
 
-The `dist/` directory contains authored static source; it is tracked in Git and does not require compilation. `npm run source` produces a downloadable ZIP under `dist/download/`. This generated ZIP is ignored by Git and excludes Site identity. The portable hosting manifest in the ZIP can be used for a new static deployment.
+The `dist/` directory contains authored static source; it is tracked in Git and does not require compilation. `npm run source` produces a downloadable ZIP under `dist/download/`. This generated ZIP is ignored by Git. An explicit source-path/file-type list excludes local environment files, databases, symlinks and test output; the hosting manifest is always generated without Site identity. Secrets embedded directly in an allowed source file are not detected automatically. The portable hosting manifest in the ZIP can be used for a new static deployment. Relative asset and sample paths also support subdirectory hosts such as a repository-based GitHub Pages URL.
 
 ## Scope and attribution
 
