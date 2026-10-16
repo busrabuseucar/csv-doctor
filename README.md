@@ -113,3 +113,7 @@ Personal portfolio and learning project for **Büşra Buse Uçar**. No AI model 
 Not included: XLSX, non-UTF-8 decoding, arbitrary encodings, automatic data repair, schema editing, persistent storage, accounts, shared workspaces, or large-file streaming.
 
 MIT license.
+
+## İşletim
+
+[İşletim ve sürüm doğrulama](docs/OPERATIONS.md) — kurulum, veri saklama, yayın, geri dönüş ve doğrulama kapsamı.
