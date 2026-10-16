@@ -3,7 +3,7 @@
 CV’nin **Projeler** bölümüne ekle. Bu metin uygulamanın doğrulanmış yeteneklerini anlatır; bireysel katkı ve sahiplik konusunda gerçekte yaptığın işi ayrıca belirt.
 
 **CSV Doctor — CSV Veri Kalitesi ve Temizleme Aracı**  
-Kişisel proje · Yapay zekâ destekli geliştirme  
+Kişisel proje  
 JavaScript (ES Modules), Web Workers, Node.js, CSV, GitHub Actions
 
 - CSV dosyalarında eksik hücreleri, yinelenen kayıtları ve tür tutarsızlıklarını inceleyen; temizleme önizlemesi ile CSV/JSON çıktıları sunan MVP.
@@ -17,7 +17,7 @@ CV’yi PDF olarak kaydederken iki bağlantının da tıklanabildiğini kontrol 
 Kısa İngilizce sürüm:
 
 **CSV Doctor — CSV Quality & Cleaning Tool**  
-Personal project · AI-assisted development  
+Personal project  
 JavaScript, Web Workers, Node.js, GitHub Actions
 
 - MVP for inspecting missing values, duplicate records and type inconsistencies, with original/cleaned previews and CSV/JSON exports.
